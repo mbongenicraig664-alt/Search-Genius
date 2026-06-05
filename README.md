@@ -1,3 +1,20 @@
-# Search Genius
 
-An AI-powered educational app for students.
+name: Build AAB
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Build AAB
+        run: ./gradlew bundleRelease
